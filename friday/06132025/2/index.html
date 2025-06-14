@@ -3,249 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart AI Stash: Meta's $15B Scale AI Deal - What The Algorithm Reveals</title>
+    <title>Smart AI Stash: Friday AI Trends Intelligence</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 20px;
+            font-family: 'Inter', monospace, -apple-system, BlinkMacSystemFont, sans-serif;
             background: #000000;
             color: #ffffff;
-            line-height: 1.6;
+            min-height: 100vh;
+            font-weight: 400;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             background: #000000;
+            border-radius: 0;
             padding: 40px 20px;
         }
         
         .header {
-            text-align: center;
-            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
             border-bottom: 1px solid #333333;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
+        }
+        
+        .brand-section {
+            flex: 1;
         }
         
         .brand {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 900;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            line-height: 1;
         }
         
         .tagline {
             font-size: 1rem;
             color: #888888;
             margin-bottom: 20px;
+            font-weight: 400;
             letter-spacing: 0.5px;
         }
         
-        .issue-info {
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
             background: #ffffff;
             color: #000000;
             padding: 8px 16px;
             border-radius: 4px;
             font-size: 0.9rem;
             font-weight: 600;
+            gap: 8px;
             letter-spacing: 0.5px;
         }
         
-        .headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 40px 0 20px 0;
-            line-height: 1.2;
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
         
-        .subheadline {
-            font-size: 1.2rem;
-            color: #888888;
-            margin-bottom: 40px;
-            font-weight: 400;
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
         
-        .section {
-            margin-bottom: 50px;
+        .logo-inner {
+            width: 70px;
+            height: 70px;
+            background: #000000;
+            border-radius: 12px;
+        }
+        
+        .logo-dot {
+            width: 24px;
+            height: 24px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .charts-section {
+            margin-bottom: 60px;
         }
         
         .section-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-left: 4px solid #ffffff;
-            padding-left: 15px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 20px;
         }
         
-        .content {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #cccccc;
-            margin-bottom: 20px;
-        }
-        
-        .highlight-box {
-            background: #111111;
-            border: 1px solid #333333;
-            border-left: 4px solid #ffffff;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 4px;
-        }
-        
-        .highlight-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .virality-score {
-            display: inline-block;
-            background: #ffffff;
-            color: #000000;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin: 0 5px;
-        }
-        
-        .key-stats {
+        .charts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
-        .stat-box {
-            background: #111111;
-            border: 1px solid #333333;
-            padding: 20px;
-            text-align: center;
-            border-radius: 4px;
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: #888888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .quote {
-            font-style: italic;
-            color: #ffffff;
-            background: #111111;
-            border-left: 4px solid #ffffff;
-            padding: 20px 25px;
-            margin: 25px 0;
-            font-size: 1.1rem;
-        }
-        
-        .source-link {
-            color: #ffffff;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        
-        .source-link:hover {
-            color: #cccccc;
-        }
-        
-        .footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #333333;
-            text-align: center;
-        }
-        
-        .newsletter-cta {
-            background: #111111;
+        .chart-container {
+            background: #000000;
             border: 1px solid #333333;
             border-radius: 4px;
             padding: 30px;
-            margin: 40px 0;
-            text-align: center;
         }
         
-        .cta-title {
-            font-size: 1.2rem;
+        .chart-title {
+            font-size: 1rem;
             font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
             color: #ffffff;
-            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        .insights-section {
+            border-top: 1px solid #333333;
+            padding-top: 60px;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .insight-card {
+            background: #000000;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            padding: 30px;
+            border-left: 4px solid #ffffff;
+        }
+        
+        .insight-header {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .insight-text {
+            line-height: 1.6;
+            color: #888888;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        
+        .trend-score {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #333333;
+            color: #888888;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .newsletter-cta {
+            margin-top: 40px;
+            padding: 40px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            text-align: center;
+            background: #000000;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .cta-button {
             display: inline-block;
             background: #ffffff;
             color: #000000;
-            padding: 15px 30px;
+            padding: 16px 32px;
             border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 15px;
-        }
-        
-        .sources {
-            background: #111111;
-            border: 1px solid #333333;
-            padding: 25px;
-            margin: 40px 0;
-            border-radius: 4px;
-        }
-        
-        .sources-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 15px;
             text-transform: uppercase;
+            transition: all 0.2s ease;
+            border: 2px solid #ffffff;
+        }
+        
+        .cta-button:hover {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        
+        .cta-subtext {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #666666;
             letter-spacing: 0.5px;
         }
         
-        .source-item {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #cccccc;
-        }
-        
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .brand {
+                font-size: 2.5rem;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .container {
                 padding: 20px 15px;
             }
             
-            .brand {
-                font-size: 2rem;
+            .logo {
+                width: 80px;
+                height: 80px;
+                border-radius: 16px;
             }
             
-            .headline {
-                font-size: 1.8rem;
+            .logo-inner {
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
             }
             
-            .key-stats {
-                grid-template-columns: 1fr;
+            .logo-dot {
+                width: 16px;
+                height: 16px;
+                top: 12px;
+                right: 12px;
             }
         }
     </style>
@@ -253,164 +293,209 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="brand">🤖 Smart AI Stash</div>
-            <div class="tagline">Daily AI News That Matters + Weekly Intelligence</div>
-            <div class="issue-info">⚡ FRIDAY INTELLIGENCE • JUNE 13, 2025</div>
+            <div class="brand-section">
+                <div class="brand">SMART AI STASH</div>
+                <div class="tagline">Daily AI News That Matters + Weekly Intelligence</div>
+                <div class="date-badge">
+                    ⚡ FRIDAY INTELLIGENCE • JUNE 13, 2025
+                </div>
+            </div>
+            
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-inner"></div>
+                    <div class="logo-dot"></div>
+                </div>
+            </div>
         </div>
         
-        <div class="headline">Meta's $15B Scale AI Deal: What Our Algorithmic Analysis Reveals About the AI Infrastructure Gold Rush</div>
-        <div class="subheadline">Why this massive investment scores 80/100 on our virality algorithm and what it means for the future of AI development</div>
+        <div class="charts-section">
+            <div class="section-title">🔥 ALGORITHMIC VIRALITY ANALYSIS</div>
+            
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">📊 VIRALITY SCORES (PAST 48 HOURS)</div>
+                    <canvas id="categoryChart" width="400" height="300"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">🎯 IMPACT FACTOR BREAKDOWN</div>
+                    <canvas id="volumeChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+        </div>
         
-        <div class="section">
-            <div class="content">
-                Yesterday, Meta finalized one of the largest private tech deals in history: a <strong>$14.3 billion investment</strong> for a 49% stake in Scale AI, valuing the data-labeling startup at $29 billion. But while mainstream media focuses on the staggering price tag, our algorithmic virality analysis reveals why this deal represents a fundamental shift in AI strategy that most observers are missing.
-            </div>
+        <div class="insights-section">
+            <div class="section-title">🔍 VIRALITY INTELLIGENCE</div>
             
-            <div class="key-stats">
-                <div class="stat-box">
-                    <div class="stat-number">80/100</div>
-                    <div class="stat-label">Virality Score</div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-header">🏆 META $15B SCALE AI DEAL</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">80/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">BREAKOUT FACTOR:</strong> $15B financial impact + data infrastructure consolidation
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">$29B</div>
-                    <div class="stat-label">Scale AI Valuation</div>
+                
+                <div class="insight-card">
+                    <div class="insight-header">🏛️ SENATOR'S RISE ACT</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">70/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">REGULATORY SHIFT:</strong> AI developers must publish training data + evaluation methods
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">49%</div>
-                    <div class="stat-label">Meta's Stake</div>
+                
+                <div class="insight-card">
+                    <div class="insight-header">🚗 AUTONOMOUS VEHICLES</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">65/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">POLICY CHANGE:</strong> USDOT streamlines approval for cars without steering wheels
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number">28</div>
-                    <div class="stat-label">CEO Wang's Age</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">⚡ The Runtime Analysis</div>
-            <div class="content">
-                Our algorithmic virality scoring system—which weighs Financial Impact (30%), Regulatory Impact (25%), Consumer Relevance (20%), Controversy Potential (15%), and Recency (10%)—awarded this story a rare <span class="virality-score">80/100</span> score. Here's why:
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title">🏆 Financial Impact: 30/30 Points</div>
-                <div class="content">
-                    At $14.3 billion, this represents Meta's second-largest acquisition ever, trailing only the $19 billion WhatsApp purchase. But unlike WhatsApp, this isn't about user acquisition—it's about securing the fundamental infrastructure that powers AI development. Scale AI's revenue jumped from $870 million in 2024 to an expected $2 billion in 2025, representing 130% growth in the world's most critical AI sector.
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title">🏛️ Regulatory Impact: 15/25 Points</div>
-                <div class="content">
-                    The timing couldn't be more strategic. As Congress debates AI regulation through Senator Cynthia Lummis's new RISE Act—which would require AI developers to publish detailed "model cards" with training data sources and evaluation methods—Meta is positioning itself to control the data pipeline that feeds all AI models. This vertical integration could shield Meta from future regulatory constraints that might fragment the AI development ecosystem.
+                
+                <div class="insight-card">
+                    <div class="insight-header">📄 GOOGLE GEMINI PDFS</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">40/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">CONSUMER IMPACT:</strong> Auto-summarization rolling out to 20+ languages
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="section">
-            <div class="section-title">🔍 What Mainstream Media Missed</div>
-            <div class="content">
-                While tech journalists focus on the acquisition's size, they're overlooking three critical strategic elements that our analysis reveals:
-            </div>
-            
-            <div class="content">
-                <strong>1. The Data Moat Strategy:</strong> Scale AI doesn't just label data—it has built a global workforce of contractors capable of generating high-quality, specialized training data. As <a href="https://www.semafor.com/article/06/10/2025/metas-15-billion-investment-in-scale-ai-comes-with-a-hidden-perk" class="source-link">Semafor reports</a>, a significant portion of Meta's investment requires Scale to provide future work exclusively to Meta, creating a proprietary data advantage that competitors can't easily replicate.
-            </div>
-            
-            <div class="content">
-                <strong>2. The Superintelligence Play:</strong> Scale AI founder and CEO Alexandr Wang will join Meta to lead a new "superintelligence lab." This isn't just talent acquisition—it's Meta positioning itself for the next phase of AI development where human-quality reasoning becomes the competitive differentiator.
-            </div>
-            
-            <div class="content">
-                <strong>3. The Defense-to-Commercial Pipeline:</strong> Scale AI's recent multimillion-dollar Department of Defense contracts and development of "Defense Llama" signal Meta's strategy to leverage government partnerships for commercial AI advantages—a playbook pioneered by Amazon with AWS.
-            </div>
-            
-            <div class="quote">
-                "Meta chief Mark Zuckerberg has grown agitated that rivals like OpenAI appear to be ahead in both underlying AI models and consumer-facing apps," 
-                <span style="font-style: normal;">— <a href="https://www.cnbc.com/2025/06/10/zuckerberg-makes-metas-biggest-bet-on-ai-14-billion-scale-ai-deal.html" class="source-link">CNBC, citing current and former Meta employees</a></span>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">📊 The Regulatory Landscape Shift</div>
-            <div class="content">
-                This deal emerges amid a complex regulatory environment that most analyses ignore. Senator Lummis's RISE Act, <a href="https://venturebeat.com/ai/senators-rise-act-would-require-ai-developers-to-list-training-data-evaluation-methods-in-exchange-for-safe-harbor-from-lawsuits/" class="source-link">introduced just yesterday</a>, would require AI developers to publish detailed technical documentation in exchange for liability protection—effectively commoditizing the kind of proprietary data insights that Scale AI specializes in.
-            </div>
-            
-            <div class="content">
-                Simultaneously, House Republicans have proposed a <a href="https://www.washingtonpost.com/politics/2025/06/03/ai-regulation-moratorium-state-lawmakers-letter/" class="source-link">10-year moratorium on state AI regulation</a>, facing bipartisan opposition from 260 state lawmakers across all 50 states. This regulatory uncertainty makes Meta's vertical integration strategy even more valuable—by owning the data pipeline, Meta insulates itself from potential regulatory fragmentation.
-            </div>
-
-            <div class="highlight-box">
-                <div class="highlight-title">🎯 Strategic Insight: The Infrastructure Thesis</div>
-                <div class="content">
-                    Our analysis suggests this isn't just about AI models—it's about controlling the picks and shovels of the AI gold rush. While competitors chase marginal improvements in model performance, Meta is securing the fundamental infrastructure that makes AI development possible. This explains why our algorithm weighted this story so heavily: it represents a paradigm shift from competing on AI outputs to controlling AI inputs.
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">🔮 Forward Intelligence</div>
-            <div class="content">
-                <strong>What to watch next:</strong>
-            </div>
-            
-            <div class="content">
-                • <strong>Scale AI's client retention:</strong> How many current clients (OpenAI, Google, Microsoft) continue using Scale's services now that Meta owns 49%?
-            </div>
-            
-            <div class="content">
-                • <strong>Regulatory response:</strong> Will the FTC investigate this as an anti-competitive acquisition disguised as an investment?
-            </div>
-            
-            <div class="content">
-                • <strong>Competitive reactions:</strong> Expect Google, Microsoft, and OpenAI to announce competing data infrastructure investments within 90 days.
-            </div>
-            
-            <div class="content">
-                • <strong>Congressional action:</strong> The RISE Act's progression through Congress now carries higher stakes as Meta's data advantages become apparent.
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">💡 Bottom Line Intelligence</div>
-            <div class="content">
-                While everyone debates whether $15 billion is too much for a data labeling company, they're missing the real story: Meta just secured a strategic chokepoint in AI development infrastructure. This isn't about Scale AI's current valuation—it's about controlling the future flow of high-quality training data that every AI company desperately needs.
-            </div>
-            
-            <div class="content">
-                Our algorithmic analysis reveals why this story scored <span class="virality-score">80/100</span>: it combines massive financial impact with long-term strategic implications that most observers are missing. In an industry where everyone is chasing the next breakthrough model, Meta is building the highway that all traffic must travel.
-            </div>
-            
-            <div class="content">
-                The question isn't whether Meta overpaid—it's whether they secured an insurmountable advantage in the infrastructure layer that enables all AI development. Based on our analysis, the answer appears to be yes.
-            </div>
-        </div>
-
-        <div class="newsletter-cta">
-            <div class="cta-title">Get This Intelligence Daily</div>
-            <div class="content" style="margin-bottom: 0;">Smart AI Stash delivers algorithmic analysis that cuts through AI hype with data-driven insights you can act on immediately.</div>
-            <a href="https://smartaistash.com" class="cta-button">Subscribe Free</a>
-        </div>
-
-        <div class="sources">
-            <div class="sources-title">📚 Sources & References</div>
-            <div class="source-item">1. <a href="https://www.reuters.com/business/finance/meta-finalizes-investment-scale-ai-valuing-startup-29-billion-2025-06-13/" class="source-link">Reuters: Meta poaches 28-year-old Scale AI CEO after taking multibillion dollar stake</a></div>
-            <div class="source-item">2. <a href="https://www.cnbc.com/2025/06/10/zuckerberg-makes-metas-biggest-bet-on-ai-14-billion-scale-ai-deal.html" class="source-link">CNBC: A frustrated Zuckerberg makes his biggest AI bet as Meta nears $14 billion stake in Scale AI</a></div>
-            <div class="source-item">3. <a href="https://www.semafor.com/article/06/10/2025/metas-15-billion-investment-in-scale-ai-comes-with-a-hidden-perk" class="source-link">Semafor: Meta's $15 billion investment in Scale AI comes with a hidden perk</a></div>
-            <div class="source-item">4. <a href="https://venturebeat.com/ai/senators-rise-act-would-require-ai-developers-to-list-training-data-evaluation-methods-in-exchange-for-safe-harbor-from-lawsuits/" class="source-link">VentureBeat: Senator's RISE Act would require AI developers to list training data</a></div>
-            <div class="source-item">5. <a href="https://www.washingtonpost.com/politics/2025/06/03/ai-regulation-moratorium-state-lawmakers-letter/" class="source-link">Washington Post: State lawmakers to Congress: Don't stop us from regulating AI</a></div>
-            <div class="source-item">6. <a href="https://www.lummis.senate.gov/press-releases/lummis-introduces-ai-legislation-to-foster-development-strengthen-professional-responsibility/" class="source-link">Senator Lummis: RISE Act Press Release</a></div>
-        </div>
-
+        
         <div class="footer">
-            <div class="content" style="text-align: center; color: #888888; margin-bottom: 0;">
-                <strong style="color: #ffffff;">⚡ THE RUNTIME</strong> algorithmic virality analysis •
-                <strong style="color: #ffffff;">🔥 TOOL FRIDAY:</strong> Infrastructure tools win the AI race<br>
-                Smart AI Stash • Daily AI News That Matters + Weekly Intelligence<br>
-                <a href="https://smartaistash.com" class="source-link">smartaistash.com</a>
+            <strong>⚡ THE RUNTIME</strong> algorithmic virality analysis • 
+            <strong>🔥 TOOL FRIDAY:</strong> Meta's $15B data infrastructure bet scores 80/100<br><br>
+            
+            <div class="newsletter-cta">
+                <div class="cta-text">GET DAILY AI INTELLIGENCE THAT CUTS THROUGH THE HYPE</div>
+                <a href="https://smartaistash.com" class="cta-button">SUBSCRIBE TO SMART AI STASH</a>
+                <div class="cta-subtext">Daily news + weekly deep-dives • 100% free, unsubscribe anytime</div>
             </div>
         </div>
     </div>
+    
+    <script>
+        // Chart.js configuration matching the minimal theme
+        Chart.defaults.color = '#888888';
+        Chart.defaults.font.family = 'Inter';
+        
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#888888',
+                        font: {
+                            size: 10,
+                            weight: '500'
+                        },
+                        usePointStyle: true,
+                        pointStyle: 'rect'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { 
+                        color: '#666666',
+                        font: { size: 9, weight: '500' }
+                    },
+                    grid: { 
+                        color: '#333333',
+                        lineWidth: 1
+                    },
+                    border: {
+                        color: '#333333'
+                    }
+                },
+                x: {
+                    ticks: { 
+                        color: '#666666',
+                        font: { size: 9, weight: '500' }
+                    },
+                    grid: { 
+                        color: '#333333',
+                        lineWidth: 1
+                    },
+                    border: {
+                        color: '#333333'
+                    }
+                }
+            }
+        };
+        
+        // Category Trend Scores Chart - Updated with virality scores
+        const ctx1 = document.getElementById('categoryChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Meta Scale\nAI Deal', 'RISE Act\nRegulation', 'Autonomous\nVehicles', 'Gemini\nPDFs'],
+                datasets: [{
+                    label: 'Virality Score',
+                    data: [80, 70, 65, 40],
+                    backgroundColor: '#ffffff',
+                    borderColor: '#ffffff',
+                    borderWidth: 0,
+                    borderRadius: 0,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    y: {
+                        ...chartOptions.scales.y,
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Impact Factor Breakdown Chart
+        const ctx2 = document.getElementById('volumeChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Financial Impact', 'Regulatory Impact', 'Consumer Relevance', 'Controversy', 'Recency'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: [
+                        '#ffffff',
+                        '#cccccc',
+                        '#999999',
+                        '#666666',
+                        '#444444'
+                    ],
+                    borderColor: '#000000',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#888888',
+                            font: { 
+                                size: 9,
+                                weight: '500'
+                            },
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
