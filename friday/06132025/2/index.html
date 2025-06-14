@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart AI Stash: Friday AI Trends Intelligence</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', monospace, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #000000;
+            border-radius: 0;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 40px;
+        }
+        
+        .brand-section {
+            flex: 1;
+        }
+        
+        .brand {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #888888;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #ffffff;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo-inner {
+            width: 70px;
+            height: 70px;
+            background: #000000;
+            border-radius: 12px;
+        }
+        
+        .logo-dot {
+            width: 24px;
+            height: 24px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .charts-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 20px;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .chart-container {
+            background: #000000;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            padding: 30px;
+        }
+        
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .insights-section {
+            border-top: 1px solid #333333;
+            padding-top: 60px;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .insight-card {
+            background: #000000;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            padding: 30px;
+            border-left: 4px solid #ffffff;
+        }
+        
+        .insight-header {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .insight-text {
+            line-height: 1.6;
+            color: #888888;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        
+        .trend-score {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #333333;
+            color: #888888;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .newsletter-cta {
+            margin-top: 40px;
+            padding: 40px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            text-align: center;
+            background: #000000;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            border: 2px solid #ffffff;
+        }
+        
+        .cta-button:hover {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        
+        .cta-subtext {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #666666;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .brand {
+                font-size: 2.5rem;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+                border-radius: 16px;
+            }
+            
+            .logo-inner {
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+            }
+            
+            .logo-dot {
+                width: 16px;
+                height: 16px;
+                top: 12px;
+                right: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="brand-section">
+                <div class="brand">SMART AI STASH</div>
+                <div class="tagline">Daily AI News That Matters + Weekly Intelligence</div>
+                <div class="date-badge">
+                    ⚡ FRIDAY INTELLIGENCE • JUNE 13, 2025
+                </div>
+            </div>
+            
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-inner"></div>
+                    <div class="logo-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-section">
+            <div class="section-title">🔥 ALGORITHMIC VIRALITY ANALYSIS</div>
+            
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">📊 VIRALITY SCORES (PAST 48 HOURS)</div>
+                    <canvas id="categoryChart" width="400" height="300"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">🎯 IMPACT FACTOR BREAKDOWN</div>
+                    <canvas id="volumeChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <div class="section-title">🔍 VIRALITY INTELLIGENCE</div>
+            
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-header">🏆 META $15B SCALE AI DEAL</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">80/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">BREAKOUT FACTOR:</strong> $15B financial impact + data infrastructure consolidation
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-header">🏛️ SENATOR'S RISE ACT</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">70/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">REGULATORY SHIFT:</strong> AI developers must publish training data + evaluation methods
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-header">🚗 AUTONOMOUS VEHICLES</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">65/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">POLICY CHANGE:</strong> USDOT streamlines approval for cars without steering wheels
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-header">📄 GOOGLE GEMINI PDFS</div>
+                    <div class="insight-text">
+                        Algorithmic virality score: <span class="trend-score">40/100</span>
+                        <br><br>
+                        <strong style="color: #ffffff;">CONSUMER IMPACT:</strong> Auto-summarization rolling out to 20+ languages
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>⚡ THE RUNTIME</strong> algorithmic virality analysis • 
+            <strong>🔥 TOOL FRIDAY:</strong> Meta's $15B data infrastructure bet scores 80/100<br><br>
+            
+            <div class="newsletter-cta">
+                <div class="cta-text">GET DAILY AI INTELLIGENCE THAT CUTS THROUGH THE HYPE</div>
+                <a href="https://smartaistash.com" class="cta-button">SUBSCRIBE TO SMART AI STASH</a>
+                <div class="cta-subtext">Daily news + weekly deep-dives • 100% free, unsubscribe anytime</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Chart.js configuration matching the minimal theme
+        Chart.defaults.color = '#888888';
+        Chart.defaults.font.family = 'Inter';
+        
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#888888',
+                        font: {
+                            size: 10,
+                            weight: '500'
+                        },
+                        usePointStyle: true,
+                        pointStyle: 'rect'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { 
+                        color: '#666666',
+                        font: { size: 9, weight: '500' }
+                    },
+                    grid: { 
+                        color: '#333333',
+                        lineWidth: 1
+                    },
+                    border: {
+                        color: '#333333'
+                    }
+                },
+                x: {
+                    ticks: { 
+                        color: '#666666',
+                        font: { size: 9, weight: '500' }
+                    },
+                    grid: { 
+                        color: '#333333',
+                        lineWidth: 1
+                    },
+                    border: {
+                        color: '#333333'
+                    }
+                }
+            }
+        };
+        
+        // Category Trend Scores Chart - Updated with virality scores
+        const ctx1 = document.getElementById('categoryChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Meta Scale\nAI Deal', 'RISE Act\nRegulation', 'Autonomous\nVehicles', 'Gemini\nPDFs'],
+                datasets: [{
+                    label: 'Virality Score',
+                    data: [80, 70, 65, 40],
+                    backgroundColor: '#ffffff',
+                    borderColor: '#ffffff',
+                    borderWidth: 0,
+                    borderRadius: 0,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    y: {
+                        ...chartOptions.scales.y,
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Impact Factor Breakdown Chart
+        const ctx2 = document.getElementById('volumeChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Financial Impact', 'Regulatory Impact', 'Consumer Relevance', 'Controversy', 'Recency'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: [
+                        '#ffffff',
+                        '#cccccc',
+                        '#999999',
+                        '#666666',
+                        '#444444'
+                    ],
+                    borderColor: '#000000',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#888888',
+                            font: { 
+                                size: 9,
+                                weight: '500'
+                            },
+                            padding: 15,
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
